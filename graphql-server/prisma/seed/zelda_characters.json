@@ -1,0 +1,166 @@
+{
+  "data": [
+    {
+      "name": "Link",
+      "description": "Link is the name shared by the recurring character in The Legend of Zelda series. There are many incarnations of Link, each possessing the spirit of the hero, with some of them being blood-related as well. They are chosen by the Golden Goddesses to protect the land from evil whenever deemed necessary. They often need to complete a series of trials to mature into the chosen hero. In most games of The Legend of Zelda series, their adventures take place within Kingdom of Hyrule, traveling through the land, collecting important items, and defeating a wide variety of enemies while trying to save both Princess Zelda and her kingdom from the clutches of Ganon or other villains. The first Link was introduced as a young Sword-wielding boy, but the identity, appearance, and role of each incarnation of Link has varied from game to game. Many of them are given titles to identify them, such as the Hero of Time in Ocarina of Time and the Hero of Winds in The Wind Waker. ",
+      "gender": "Male",
+      "race": "Hylian"
+    },
+    {
+      "name": "Zelda",
+      "description": "Zelda, is the eponymous character of The Legend of Zelda series. With the exception of Link's Awakening, Majora's Mask, and Tri Force Heroes, an incarnation of Zelda or one of her alter egos has always been one of the central characters in the series.",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Anjean",
+      "description": "Anjean is a character in Spirit Tracks. She is a member of the Lokomo people and the protector of the Tower of Spirits, the central hub of the Spirit Tracks, whose goal is to prevent the evil Malladus from breaking free of his imprisonment. Anjean provides the Spirit Train, which Link and Princess Zelda use along their quest. Anjean was also a very close friend with Tetra after she met her shortly after the feisty pirate arrived to the land that would become the next Hyrule. As a result of their strong friendship, Anjean gave Tetra the sacred instrument known as the Spirit Flute, but only under the condition that she and her descendants would use it to protect the land. ",
+      "gender": "Female",
+      "race": "Lokomo"
+    },
+    {
+      "name": "Animal Companion",
+      "description": "The Animal Companions are three characters in Oracle of Seasons and Oracle of Ages: Ricky, Moosh, and Dimitri. They become Link's Mounts when he needs their special abilities to traverse certain terrain. ",
+      "gender": null,
+      "race": null
+    },
+    {
+      "name": "Ancient Oven",
+      "description": "The Ancient Oven is a character in Breath of the Wild. ",
+      "gender": null,
+      "race": null
+    },
+    {
+      "name": "Carben",
+      "description": "Carben is a character from Spirit Tracks. He is a member of the Lokomo race and Guardian of the Ocean Realm who resides in the Ocean Sanctuary. Like the rest of the Lokomo people, Carben possesses a sacred instrument, his being the flute, which generates energy to power the Spirit Tracks when played with another sacred instrument. Carben also has the ability to communicate with birds. ",
+      "gender": "Male",
+      "race": "Lokomo"
+    },
+    {
+      "name": "Captain Krin",
+      "description": "Captain Krin is a character featured in the The Legend of Zelda comics by Valiant Comics published by Valiant Comics. He is the soldier captain at the North Castle who will do anything to protect both the palace and the king. ",
+      "gender": null,
+      "race": "Hylian"
+    },
+    {
+      "name": "Captain Stalfos",
+      "description": "Captain Stalfos is a boss in Freshly-Picked Tingle's Rosy Rupeeland. He is the leader of the group of Pirates. In order for Tingle to join the pirate crew, he has to be dead. If he wants to survive, he must defeat the captain in a sword duel. If Tingle succeeds in this task, he will be given the Bone Ocarina, which may be used at any pier to call the pirate ship. ",
+      "gender": null,
+      "race": "Pirate"
+    },
+    {
+      "name": "Flaxel",
+      "description": "Flaxel is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Grog",
+      "description": "Grog is a character in Majora's Mask. ",
+      "gender": "Male",
+      "race": "Hylian"
+    },
+    {
+      "name": "Straia",
+      "description": "Straia is a character in Breath of the Wild. ",
+      "gender": null,
+      "race": "Hylian"
+    },
+    {
+      "name": "Malena",
+      "description": "Malena is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Gerudo"
+    },
+    {
+      "name": "Makar",
+      "description": "Makar is a character in The Wind Waker. ",
+      "gender": "Male",
+      "race": "Korok"
+    },
+    {
+      "name": "Mallara",
+      "description": "Mallara is a character in Skyward Sword. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Madame Scratchcard",
+      "description": "Madame Scratchcard is a character in Freshly-Picked Tingle's Rosy Rupeeland. ",
+      "gender": "Female",
+      "race": "Human"
+    },
+    {
+      "name": "Mad Batter",
+      "description": "The Mad Batter is a recurring character in The Legend of Zelda series. He sleeps in altars found in underground caves, and Link may awaken him by sprinkling Magic Powder on these altars. The bat creature will then curse Link to punish him for having been released, but he inadvertently helps Link out by providing upgrades as his curse. ",
+      "gender": "Male",
+      "race": null
+    },
+    {
+      "name": "Roam",
+      "description": "Roam is a character featured in the A Link to the Past comic by Shotaro Ishinomori by Shotaro Ishinomori. Referred to in one of the chapters as 'The Mystery Knight,' Roam is a descendant of a master archer from the ranks of the Knights of Hyrule. When Roam discovered that Agahnim was sending the Seven Maidens to the Dark World, he sought after them through the Portal near Death Mountain. Roam considers Link to be immature, stubborn and lacking discipline to wield the Master Sword, with Roam boasting that the Book of Mudora supports him instead as the hero who will save Hyrule. ",
+      "gender": "Male",
+      "race": "Hylian"
+    },
+    {
+      "name": "Lynna City Comedian",
+      "description": "The Lynna City Comedian is a character in Oracle of Ages. ",
+      "gender": "Male",
+      "race": "Human"
+    },
+    {
+      "name": "Keeley",
+      "description": "Keeley is a character in The Minish Cap. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Katta",
+      "description": "Katta is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Gerudo"
+    },
+    {
+      "name": "Lucky Lee",
+      "description": "Lucky Lee is a character in Phantom Hourglass. ",
+      "gender": null,
+      "race": "Spirit"
+    },
+    {
+      "name": "Lucia",
+      "description": "Lucia is a character in Spirit Tracks. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Loone",
+      "description": "Loone is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Linkle",
+      "description": "Linkle is a playable Warrior in Hyrule Warriors Legends. She can be transferred over to Hyrule Warriors as well. She wields dual Crossbows as her weapon and uses them alongside quick kicks to attack enemies. Her story is described as a side story separate from the rest of the game's plot. ",
+      "gender": "Female",
+      "race": "Hylian"
+    },
+    {
+      "name": "Ripp",
+      "description": "Ripp is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Gerudo"
+    },
+    {
+      "name": "Rhondson",
+      "description": "Rhondson is a character in Breath of the Wild. ",
+      "gender": "Female",
+      "race": "Gerudo"
+    },
+    {
+      "name": "Leaf",
+      "description": "Leaf is a character in Phantom Hourglass. ",
+      "gender": "Male",
+      "race": "Fairy"
+    }
+  ]
+}

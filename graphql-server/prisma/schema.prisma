@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
+
+model Character {
+  id    Int     @id @default(autoincrement())
+  name String
+  description  String
+  gender String?
+  race String?
+}
+
+model Places {
+  id        Int      @id @default(autoincrement())
+  name String
+  description String
+}
+
+model Bosses {
+  id        Int      @id @default(autoincrement())
+  name String
+  description String
+}
