@@ -1,0 +1,22 @@
+nav {
+    text-align: left;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 20px;
+}
+
+nav ul li .link {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li .link:hover {
+    color: rgb(172, 172, 172);
+    text-decoration: none;
+}
