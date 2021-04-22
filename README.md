@@ -1,5 +1,9 @@
 ## First Time Users Start Here:
 
+This project contains two different servers. One is the frontend client made with React.js. The second is a GraphQL server. These will both run locally on your machine after downloading or cloning the repository above. A separate Node.js server is being run [HERE](https://dgm-4790-server.herokuapp.com/).
+
+All of the scripts available to run this project are located in the [package.json](/package.json) file.
+
 ### 1. ```npm install```
 
 ### 2. ```npm run postinstall```
@@ -13,8 +17,6 @@
 ### 6. ```npm run start-dev```
 
 After these commands, one window will open with the client (frontend) displayed, and the GraphQL playground will be available through a ```localhost``` link in the terminal.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## App Features
 
