@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "postinstall": "npm install && cd graphql-server && npm install",
     "start-dev": "concurrently --kill-others \"cd graphql-server && npm run dev\" \"npm start\"",
     "launch": "cd graphql-server && npm run nuke && npm run launchDocker",
     "migrate": "cd graphql-server && npm run migrate",
