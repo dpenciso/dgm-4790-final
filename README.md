@@ -209,3 +209,97 @@ const handleDelete = async () => {
     console.log(selectedAmiibo._id);
 };
 ```
+
+## Available Queries:
+
+### allCharacters
+
+```
+query allCharacters{
+  allCharacters {
+    id
+    name
+    description
+    gender
+    race
+  }
+}
+```
+
+### allPlaces
+
+```
+query allPlaces{
+  allPlaces {
+    id
+    name
+    description
+  }
+}
+```
+
+### allBosses
+
+```
+query allBosses{
+  allPlaces {
+    id
+    name
+    description
+  }
+}
+```
+
+## Available Mutations:
+
+### createPlace
+
+```
+mutation createPlace {
+  createPlace(
+    data: {
+      name: "",
+      description: ""
+    }
+  ) {
+    id
+    name
+    description
+  }
+}
+```
+
+### createCharacter
+
+```
+mutation createCharacter {
+  createCharacter(
+    data: {
+      name: "",
+      description: "",
+      gender: "",
+      race: ""
+    }
+  ) {
+    id
+    name
+    description
+    gender
+    race
+  }
+}
+```
+
+### deleteCharacter
+
+```
+mutation deleteCharacter {
+  deleteCharacter(id: ) {
+    id
+    name
+    description
+    gender
+    race
+  }
+}
+```
