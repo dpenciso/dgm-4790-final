@@ -1,18 +1,18 @@
 ## First Time Users Start Here:
 
-### 1. '''npm install'''
+### 1. ```npm install```
 
-### 2. '''npm run postinstall'''
+### 2. ```npm run postinstall```
 
-### 3. '''npm run launch'''
+### 3. ```npm run launch```
 
-### 4. '''npm run migrate'''
+### 4. ```npm run migrate```
 
-### 5. '''npm run seed'''
+### 5. ```npm run seed```
 
-### 6. '''npm run start-dev'''
+### 6. ```npm run start-dev```
 
-After these commands, one window will open with the client (frontend) displayed, and the GraphQL playground will be available through a '''localhost''' link in the terminal.
+After these commands, one window will open with the client (frontend) displayed, and the GraphQL playground will be available through a ```localhost``` link in the terminal.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
