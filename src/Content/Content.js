@@ -4,6 +4,7 @@ import Header from "../Content/Header/header";
 import ButtonAppBar from "../Content/Bar/ButtonAppBar";
 import Home from "../Content/Home/Home";
 import Contact from "../Content/Contact/Contact"
+import Zelda from '../Content/Zelda/Zelda'
 import { Route } from "react-router-dom";
 
 function Content() {
@@ -13,6 +14,7 @@ function Content() {
       <Header />
       <Route path="/" exact component={Home} />
       <Route path="/amiibos" exact component={Amiibo} />
+      <Route path="/zelda" exact component={Zelda} />
       <Route path="/contact" exact component={Contact} />
     </div>
   );

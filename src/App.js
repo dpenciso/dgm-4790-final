@@ -10,9 +10,8 @@ import Content from "./Content/Content";
 function App() {
   return (
     <div className="App">
-      
       <BrowserRouter>
-        <Content/>
+          <Content />
       </BrowserRouter>
     </div>
   );

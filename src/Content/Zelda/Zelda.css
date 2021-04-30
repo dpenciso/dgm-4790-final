@@ -1,0 +1,14 @@
+.container-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+    background-image: url(../mario-background.jpg);
+    background-position: bottom;
+    background-repeat: none;
+    background-attachment: fixed;
+}
+
+.searchInput {
+    margin: 1rem;
+}

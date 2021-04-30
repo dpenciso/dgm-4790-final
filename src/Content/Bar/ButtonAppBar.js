@@ -35,6 +35,7 @@ export default function ButtonAppBar() {
                 <ul>
                   <li><Link className='link' to="/">Home</Link></li>
                   <li><Link className='link' to="/amiibos">Amiibos</Link></li>
+                  <li><Link className='link' to="/zelda">Zelda</Link></li>
                   <li><Link className='link' to="/contact">Contact</Link></li>
                 </ul>
               </nav>
