@@ -50,10 +50,6 @@ The custom components used in this app are [Amiibo.js](/src/Content/Amiibo/Amiib
 
 React Router is used for the routing of this app. <code>Route</code> can be found in the [Content.js](/src/Content/Content.js) component. <code>Link</code> can be found in the [ButtonAppBar.js](/src/Content/Bar/ButtonAppBar.js) component.
 
-### Hosted on Netlify
-
-This app is hosted on Netlify and can be found at [https://dazzling-tereshkova-66bc33.netlify.app/](https://dazzling-tereshkova-66bc33.netlify.app/)
-
 ### Server hosted on Heroku
 
 The API is hosted on Heroku at [https://dgm-4790-server.herokuapp.com/](https://dgm-4790-server.herokuapp.com/)
