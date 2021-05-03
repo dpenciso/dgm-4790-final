@@ -108,22 +108,28 @@ const Mutation = objectType({
     //   },
     // })
 
-    // t.field('incrementPostViewCount', {
-    //   type: 'Post',
-    //   args: {
-    //     id: nonNull(intArg()),
-    //   },
-    //   resolve: (_, args, context) => {
-    //     return context.prisma.post.update({
-    //       where: { id: args.id || undefined },
-    //       data: {
-    //         viewCount: {
-    //           increment: 1,
-    //         },
-    //       },
-    //     })
-    //   },
-    // })
+    t.field('updateCharacter', {
+      type: 'Character',
+      args: {
+        id: nonNull(intArg()),
+        data: nonNull(
+          arg({
+            type: 'CharacterCreateInput',
+          }),
+        )
+      },
+      resolve: (_, args, context) => {
+        return context.prisma.character.update({
+          where: { id: args.id || undefined },
+          data: {
+            name: args.data.name,
+            description: args.data.description,
+            gender: args.data.gender,
+            race: args.data.race,
+          },
+        })
+      },
+    })
 
     t.field('deleteCharacter', {
       type: 'Character',

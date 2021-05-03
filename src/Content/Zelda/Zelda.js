@@ -1,32 +1,33 @@
-import React, { useState, useEffect, useCallback } from "react";
-// import axios from "axios";
-// import { makeStyles } from "@material-ui/core/styles";
-// import Card from "@material-ui/core/Card";
-// import CardActionArea from "@material-ui/core/CardActionArea";
-// import CardActions from "@material-ui/core/CardActions";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 import "./Zelda.css";
 // import LazyLoad from "react-lazyload";
 import {
-//   IconButton,
-//   TextField,
-//   Dialog,
-//   DialogTitle,
-//   DialogContent,
-//   DialogContentText,
-//   DialogActions,
-//   Button,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
   Container,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  IconButton,
 } from "@material-ui/core";
-// import SearchIcon from "@material-ui/icons/Search";
-// import EditIcon from "@material-ui/icons/Edit";
-// import DeleteIcon from "@material-ui/icons/Delete";
-// import { Formik } from "formik";
-// import * as Yup from "yup";
-// import _ from "lodash";
-import { useQuery, gql } from "@apollo/client";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { useQuery, useMutation, gql } from "@apollo/client";
 
 const ALL_CHARACTERS = gql`
   query {
@@ -40,138 +41,107 @@ const ALL_CHARACTERS = gql`
   }
 `;
 
+const UPDATE_CHARACTER = gql`
+  mutation updateCharacter(
+    $id: Int!
+    $name: String!
+    $description: String!
+    $gender: String
+    $race: String
+  ) {
+    updateCharacter(
+      id: $id
+      data: {
+        name: $name
+        description: $description
+        gender: $gender
+        race: $race
+      }
+    ) {
+      id
+    }
+  }
+`;
+
+const DELETE_CHARACTER = gql`
+  mutation deleteCharacter($id: Int!) {
+    deleteCharacter(id: $id) {
+      id
+    }
+  }
+`;
+
 function Zelda() {
-//   const [amiibos, setAmiibos] = useState([]);
-//   const [deleteOpen, setDeleteOpen] = useState(false);
-//   const [selectedAmiibo, setSelectedAmiibo] = useState({ name: "" });
-//   const [editOpen, setEditOpen] = useState(false);
-//   const [postAmiibo, setPostAmiibo] = useState({
-//     name: "",
-//     game: "",
-//     image: "",
-//     id: "",
-//     release: "",
-//   });
-//   const [debouncedName, setDebouncedName] = useState("");
-//   const apiURL = "https://dgm-4790-server.herokuapp.com/amiibo";
+  const useStyles = makeStyles(() => ({
+    root: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+    },
+    card: {
+      width: 345,
+      margin: 20,
+    },
+    content: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    typeWidth: {
+      width: "100%",
+    },
+  }));
 
-//   const fetchData = async () => {
-//     const response = await axios.get(apiURL);
-//     setAmiibos(response.data);
-//   };
+  const classes = useStyles();
 
-//   const handleInput = (event) => {
-//     debounce(event.target.value);
-//   };
-
-//   const debounce = useCallback(
-//     _.debounce((searchVal) => {
-//       setDebouncedName(searchVal);
-//     }, 1000),
-//     []
-//   );
-
-//   const handleSearch = () => {
-//     if (debouncedName) {
-//       setAmiibos(
-//         amiibos.filter((amiibo) =>
-//           amiibo.name.toLowerCase().includes(debouncedName.toLowerCase())
-//         )
-//       );
-//     } else {
-//       fetchData();
-//     }
-//   };
-
-//   const handleClickEditOpen = (amiibo) => {
-//     setSelectedAmiibo(amiibo);
-//     setEditOpen(true);
-//   };
-
-//   const handleCloseEdit = () => {
-//     setEditOpen(false);
-//   };
-
-//   const handleUpdate = async (values) => {
-//     console.log(selectedAmiibo._id);
-//     try {
-//       console.log("working");
-//       const result = await axios.put(`${apiURL}/update`, {
-//         data: {
-//           name: values.name,
-//           game: values.game,
-//           release: values.release,
-//           amiiboId: selectedAmiibo._id,
-//         },
-//       });
-//       console.log(result);
-//       if (result.status === 200) {
-//         fetchData();
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   const handlePostNewAmiibo = async () => {
-//     setPostAmiibo();
-//     try {
-//       await axios.post(`${apiURL}/`, {
-//         name: postAmiibo.name,
-//         game: postAmiibo.game,
-//         image: postAmiibo.image,
-//         id: postAmiibo.id,
-//         release: postAmiibo.release,
-//       });
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     fetchData();
-//   };
-
-//   const handleClickDeleteOpen = (amiibo) => {
-//     setSelectedAmiibo(amiibo);
-//     console.log(amiibo);
-//     setDeleteOpen(true);
-//   };
-
-//   const handleCloseDelete = async () => {
-//     setDeleteOpen(false);
-//   };
-
-//   const handleDelete = async () => {
-//     setDeleteOpen(false);
-//     console.log(selectedAmiibo._id);
-//     try {
-//       await axios.delete(`${apiURL}/delete`, {
-//         data: {
-//           amiiboId: selectedAmiibo._id,
-//         },
-//       });
-//       fetchData();
-//     } catch (err) {
-//       console.error(err);
-//     }
-//     console.log(selectedAmiibo._id);
-//   };
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
-//   const useStyles = makeStyles({
-//     root: {
-//       maxWidth: 250,
-//       margin: "1rem",
-//     },
-//     media: {
-//       height: 400,
-//     },
-//   });
-
-//   const classes = useStyles();
-
+  const [updateCharacter] = useMutation(UPDATE_CHARACTER);
+  const [deleteCharacter] = useMutation(DELETE_CHARACTER);
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState({ name: "" });
   const { loading, error, data } = useQuery(ALL_CHARACTERS);
+
+  const handleClickEditOpen = (character) => {
+    setSelectedCharacter(character.character);
+    setEditOpen(true);
+  };
+
+  const handleCloseEdit = () => {
+    setEditOpen(false);
+  };
+
+  const handleClickDeleteOpen = (character) => {
+    setSelectedCharacter(character.character);
+    setDeleteOpen(true);
+  };
+
+  const handleCloseDelete = () => {
+    setDeleteOpen(false);
+  };
+
+  const handleUpdate = async (values) => {
+    console.log("here");
+    updateCharacter({
+      variables: {
+        id: selectedCharacter.id,
+        name: values.name,
+        description: values.description,
+        gender: values.gender,
+        race: values.race,
+      },
+    });
+    console.log(`worked`);
+  };
+
+  const handleDelete = async () => {
+    setDeleteOpen(false);
+    console.log(selectedCharacter.id);
+    try {
+      deleteCharacter({ variables: { id: selectedCharacter.id } });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   if (loading) {
     return (
@@ -190,198 +160,78 @@ function Zelda() {
 
   return (
     <div className="app">
-      {/* <form className="searchInput">
-        <TextField placeholder="Search" onChange={handleInput} />
-        <IconButton aria-label="search" onClick={handleSearch}>
-          <SearchIcon />
-        </IconButton>
-      </form>
-
-      <Formik
-        initialValues={{
-          name: " ",
-          game: " ",
-          image: " ",
-          id: " ",
-          release: " ",
-        }}
-        validationSchema={Yup.object().shape({
-          name: Yup.string("Enter Amiibo name.").required("Name is required"),
-          game: Yup.string("Amiibo game"),
-          image: Yup.string("Image"),
-          id: Yup.string("ID").required("ID is required"),
-          release: Yup.string("Release date"),
+      <Container className={classes.root}>
+        {characterList.map((character) => {
+          return (
+            <Card className={classes.card} key={character.id}>
+              <CardMedia
+                component="img"
+                height="300"
+                className={classes.media}
+                image="https://www.pngitem.com/pimgs/m/83-831568_the-legend-of-zelda-png-download-zelda-logo.png"
+                title={character.name}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {character.name}
+                </Typography>
+                <Box className={classes.content}>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    Race: {character.race}
+                  </Typography>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    Gender: {character.gender}
+                  </Typography>
+                </Box>
+                <Accordion>
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography>Description</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant="body2" color="textSecondary">
+                      {character.description}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </CardContent>
+              <CardActions>
+                <IconButton
+                  aria-label="edit"
+                  onClick={() => handleClickEditOpen({ character })}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleClickDeleteOpen({ character })}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          );
         })}
-        onSubmit={async ({ setErrors, setStatus, setSubmitting }) => {
-          try {
-            await handlePostNewAmiibo();
-          } catch (err) {
-            console.error(err);
-            setStatus({ success: false });
-            setErrors({ submit: err.message });
-            setSubmitting(false);
-          }
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <form
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-            className={classes.dialogContent}
-          >
-            <h3>Fill in the information to create your new Amiibo:</h3>
-            <div>
-              {" "}
-              <TextField
-                autoFocus
-                id="name"
-                name="name"
-                label="Amiibo Name"
-                type="text"
-                style={{ margin: "1rem" }}
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={Boolean(touched.name && errors.name)}
-                helperText={touched.name && errors.name}
-              />
-              <TextField
-                autoFocus
-                id="game"
-                name="game"
-                label="Game Series"
-                type="text"
-                style={{ margin: "1rem" }}
-                value={values.game}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={Boolean(touched.game && errors.game)}
-                helperText={touched.game && errors.game}
-              />
-              <TextField
-                autoFocus
-                id="image"
-                name="image"
-                label="Image"
-                type="text"
-                style={{ margin: "1rem" }}
-                value={values.image}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={Boolean(touched.image && errors.image)}
-                helperText={touched.image && errors.image}
-              />
-              <TextField
-                autoFocus
-                id="id"
-                name="id"
-                label="ID"
-                type="text"
-                style={{ margin: "1rem" }}
-                value={values.id}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={Boolean(touched.id && errors.id)}
-                helperText={touched.id && errors.id}
-              />
-              <TextField
-                autoFocus
-                name="release"
-                id="release"
-                label="Release Date"
-                type="text"
-                style={{ margin: "1rem" }}
-                value={values.release}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={Boolean(touched.release && errors.release)}
-                helperText={touched.release && errors.release}
-              />
-            </div>
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              style={{ margin: "1rem" }}
-            >
-              Create Amiibo
-            </Button>
-          </form>
-        )}
-      </Formik>
-      <div className="container-container">
-        {amiibos &&
-          amiibos.map((amiibo) => {
-            return (
-              <div className="cards-container" key={amiibo.tail}>
-                <Card className={classes.root}>
-                  <CardActionArea
-                    onClick={() => window.open(amiibo.image, "_blank")}
-                  >
-                    <LazyLoad offset={100}>
-                      <CardMedia
-                        className={classes.media}
-                        image={amiibo.image}
-                        title={amiibo.name}
-                      />
-                    </LazyLoad>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {amiibo.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        The {amiibo.name} Amiibo, from the {amiibo.game} series,
-                        was originally released in North America on{" "}
-                        {amiibo.release}.
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <IconButton
-                      aria-label="edit"
-                      onClick={() => handleClickEditOpen(amiibo)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => handleClickDeleteOpen(amiibo)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </div>
-            );
-          })}
-      </div>
+      </Container>
       <Dialog
         open={editOpen}
         onClose={handleCloseEdit}
         aria-labelledby="edit-dialog-title"
       >
         <Formik
+          enableReinitialize
           initialValues={{
-            name: selectedAmiibo?.name,
-            game: selectedAmiibo?.game,
-            release: selectedAmiibo?.release,
+            name: selectedCharacter?.name,
+            description: selectedCharacter?.description,
+            gender: selectedCharacter?.gender,
+            race: selectedCharacter?.race,
           }}
           validationSchema={Yup.object().shape({
-            name: Yup.string("Enter Amiibo name.").required("Name is required"),
-            game: Yup.string("Amiibo game"),
-            release: Yup.string("Release date"),
+            name: Yup.string("Enter character name.").required(
+              "Name is required"
+            ),
+            description: Yup.string("Description"),
+            gender: Yup.string("Gender"),
+            race: Yup.string("Race"),
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
@@ -410,16 +260,16 @@ function Zelda() {
               onSubmit={handleSubmit}
               className={classes.dialogContent}
             >
-              <DialogTitle id="edit-dialog-title">Edit Amiibo</DialogTitle>
+              <DialogTitle id="edit-dialog-title">Edit Character</DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  Make changes below to the data about this Amiibo:
+                  Make changes below to the information about this character:
                 </DialogContentText>
                 <TextField
                   autoFocus
                   id="name"
                   name="name"
-                  label="Amiibo Name"
+                  label="Character Name"
                   type="text"
                   fullWidth
                   value={values.name}
@@ -428,31 +278,44 @@ function Zelda() {
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
                 />
+                <Box className={classes.content}>
+                  <TextField
+                    autoFocus
+                    id="gender"
+                    name="gender"
+                    label="Gender"
+                    type="text"
+                    value={values.gender}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={Boolean(touched.gender && errors.gender)}
+                    helperText={touched.gender && errors.gender}
+                  />
+                  <TextField
+                    autoFocus
+                    name="race"
+                    id="race"
+                    label="Race"
+                    type="text"
+                    value={values.race}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={Boolean(touched.race && errors.race)}
+                    helperText={touched.race && errors.race}
+                  />
+                </Box>
                 <TextField
                   autoFocus
-                  id="game"
-                  name="game"
-                  label="Game Series"
+                  id="description"
+                  name="description"
+                  label="Character Description"
                   type="text"
                   fullWidth
-                  value={values.game}
+                  value={values.description}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={Boolean(touched.game && errors.game)}
-                  helperText={touched.game && errors.game}
-                />
-                <TextField
-                  autoFocus
-                  name="release"
-                  id="release"
-                  label="Release Date"
-                  type="text"
-                  fullWidth
-                  value={values.release}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={Boolean(touched.release && errors.release)}
-                  helperText={touched.release && errors.release}
+                  error={Boolean(touched.description && errors.description)}
+                  helperText={touched.description && errors.description}
                 />
               </DialogContent>
               <DialogActions>
@@ -468,17 +331,22 @@ function Zelda() {
         </Formik>
       </Dialog>
       <Dialog open={deleteOpen} onClose={handleCloseDelete}>
-        <DialogTitle>Delete Amiibo</DialogTitle>
+        <DialogTitle>Delete Character</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete this Amiibo?
+            Are you sure you want to delete the character{" "}
+            {selectedCharacter?.name}?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDelete}>Cancel</Button>
-          <Button onClick={handleDelete}>Delete</Button>
+          <Button onClick={handleCloseDelete} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDelete} color="primary">
+            Delete
+          </Button>
         </DialogActions>
-      </Dialog> */}
+      </Dialog>
     </div>
   );
 }

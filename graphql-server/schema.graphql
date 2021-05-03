@@ -32,6 +32,7 @@ type Mutation {
   createCharacter(data: CharacterCreateInput!): Character
   createPlace(data: PlaceCreateInput!): Places!
   deleteCharacter(id: Int!): Character
+  updateCharacter(data: CharacterCreateInput!, id: Int!): Character
 }
 
 input PlaceCreateInput {
