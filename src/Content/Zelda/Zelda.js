@@ -99,7 +99,9 @@ function Zelda() {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState({ name: "" });
-  const { loading, error, data } = useQuery(ALL_CHARACTERS);
+  const { loading, error, data, refetch } = useQuery(
+    ALL_CHARACTERS
+  );
 
   const handleClickEditOpen = (character) => {
     setSelectedCharacter(character.character);
@@ -121,7 +123,7 @@ function Zelda() {
 
   const handleUpdate = async (values) => {
     console.log("here");
-    updateCharacter({
+    await updateCharacter({
       variables: {
         id: selectedCharacter.id,
         name: values.name,
@@ -131,16 +133,18 @@ function Zelda() {
       },
     });
     console.log(`worked`);
+    refetch();
   };
 
   const handleDelete = async () => {
     setDeleteOpen(false);
     console.log(selectedCharacter.id);
     try {
-      deleteCharacter({ variables: { id: selectedCharacter.id } });
+      await deleteCharacter({ variables: { id: selectedCharacter.id } });
     } catch (err) {
       console.error(err);
     }
+    refetch();
   };
 
   if (loading) {
