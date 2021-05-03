@@ -112,7 +112,12 @@ function Zelda() {
       width: "100%",
     },
     title: {
-      margin: "1rem",
+      margin: "auto",
+      color: "white",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      padding: "1rem",
+      width: "25%",
+      justifySelf: "center",
     },
   }));
 

@@ -1,12 +1,12 @@
 .main-container {
-    justify-content: center;
-    padding-top: 2rem;
-    background-image: url(../zelda-background.jpeg);
-    background-position: bottom;
-    background-repeat: none;
-    background-attachment: fixed;
+  justify-content: center;
+  padding-top: 2rem;
+  background-image: url(../zelda-background.jpeg);
+  background-position: bottom;
+  background-repeat: none;
+  background-attachment: fixed;
 }
 
 .searchInput {
-    margin: 1rem;
+  margin: 1rem;
 }

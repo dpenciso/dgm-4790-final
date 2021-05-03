@@ -1,27 +1,14 @@
 .theDiv {
-    background-image: url(../amiibo-header.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 5rem 0;
-    
+  background-image: url(../amiibo-header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5rem 0;
 }
 
 .theDiv h1 {
-    color: white;
-    text-shadow: 0 3px 4px black;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
-    animation: zoomInOut 2s infinite;
+  color: white;
+  text-shadow: 0 3px 4px black;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  animation: zoomInOut 2s infinite;
 }
-
-/* @keyframes zoomInOut {
-    0% {
-        transform: scale(1,1);
-    }
-    50% {
-        transform: scale(1.2,1.2);
-    }
-    100% {
-        transform: scale(1,1);
-    }
-} */
