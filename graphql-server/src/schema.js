@@ -3,11 +3,9 @@ const {
   makeSchema,
   nonNull,
   objectType,
-  stringArg,
   inputObjectType,
   arg,
   asNexusMethod,
-  enumType,
 } = require('nexus')
 const { DateTimeResolver } = require('graphql-scalars')
 
@@ -82,32 +80,6 @@ const Mutation = objectType({
       },
     })
 
-    // t.field('togglePublishPost', {
-    //   type: 'Post',
-    //   args: {
-    //     id: nonNull(intArg()),
-    //   },
-    //   resolve: async (_, args, context) => {
-    //     const post = await context.prisma.post.findUnique({
-    //       where: { id: args.id || undefined },
-    //       select: {
-    //         published: true,
-    //       },
-    //     })
-
-    //     if (!post) {
-    //       throw new Error(
-    //         `Post with ID ${args.id} does not exist in the database.`,
-    //       )
-    //     }
-
-    //     return context.prisma.post.update({
-    //       where: { id: args.id || undefined },
-    //       data: { published: !post.published },
-    //     })
-    //   },
-    // })
-
     t.field('updateCharacter', {
       type: 'Character',
       args: {
@@ -116,7 +88,7 @@ const Mutation = objectType({
           arg({
             type: 'CharacterCreateInput',
           }),
-        )
+        ),
       },
       resolve: (_, args, context) => {
         return context.prisma.character.update({
@@ -174,26 +146,6 @@ const Bosses = objectType({
   },
 })
 
-// const SortOrder = enumType({
-//   name: 'SortOrder',
-//   members: ['asc', 'desc'],
-// })
-
-// const PostOrderByUpdatedAtInput = inputObjectType({
-//   name: 'PostOrderByUpdatedAtInput',
-//   definition(t) {
-//     t.nonNull.field('updatedAt', { type: 'SortOrder' })
-//   },
-// })
-
-// const UserUniqueInput = inputObjectType({
-//   name: 'UserUniqueInput',
-//   definition(t) {
-//     t.int('id')
-//     t.string('email')
-//   },
-// })
-
 const CharacterCreateInput = inputObjectType({
   name: 'CharacterCreateInput',
   definition(t) {
@@ -219,11 +171,8 @@ const schema = makeSchema({
     Character,
     Places,
     Bosses,
-    // UserUniqueInput,
     PlaceCreateInput,
     CharacterCreateInput,
-    // SortOrder,
-    // PostOrderByUpdatedAtInput,
     DateTime,
   ],
   outputs: {

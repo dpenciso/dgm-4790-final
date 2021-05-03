@@ -1,9 +1,7 @@
-.container-container {
-    display: flex;
-    flex-wrap: wrap;
+.main-container {
     justify-content: center;
     padding-top: 2rem;
-    background-image: url(../mario-background.jpg);
+    background-image: url(../zelda-background.jpeg);
     background-position: bottom;
     background-repeat: none;
     background-attachment: fixed;

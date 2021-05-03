@@ -24,15 +24,21 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import _ from 'lodash'
+import _ from "lodash";
 
 function Amiibo() {
   const [amiibos, setAmiibos] = useState([]);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [selectedAmiibo, setSelectedAmiibo] = useState({ name: "" });
   const [editOpen, setEditOpen] = useState(false);
-  const [postAmiibo, setPostAmiibo] = useState({ name: "", game: "", image: "", id: "", release: "" });
-  const [debouncedName, setDebouncedName] = useState('')
+  const [postAmiibo, setPostAmiibo] = useState({
+    name: "",
+    game: "",
+    image: "",
+    id: "",
+    release: "",
+  });
+  const [debouncedName, setDebouncedName] = useState("");
   const apiURL = "https://dgm-4790-server.herokuapp.com/amiibo";
 
   const fetchData = async () => {
@@ -41,23 +47,27 @@ function Amiibo() {
   };
 
   const handleInput = (event) => {
-    debounce(event.target.value)
-  }
+    debounce(event.target.value);
+  };
 
   const debounce = useCallback(
     _.debounce((searchVal) => {
-      setDebouncedName(searchVal)
+      setDebouncedName(searchVal);
     }, 1000),
-    [],
-  )
+    []
+  );
 
   const handleSearch = () => {
     if (debouncedName) {
-      setAmiibos(amiibos.filter(amiibo => amiibo.name.toLowerCase().includes(debouncedName.toLowerCase())))
+      setAmiibos(
+        amiibos.filter((amiibo) =>
+          amiibo.name.toLowerCase().includes(debouncedName.toLowerCase())
+        )
+      );
     } else {
-      fetchData()
+      fetchData();
     }
-  }
+  };
 
   const handleClickEditOpen = (amiibo) => {
     setSelectedAmiibo(amiibo);
@@ -71,7 +81,6 @@ function Amiibo() {
   const handleUpdate = async (values) => {
     console.log(selectedAmiibo._id);
     try {
-      console.log("working");
       const result = await axios.put(`${apiURL}/update`, {
         data: {
           name: values.name,
@@ -90,7 +99,7 @@ function Amiibo() {
   };
 
   const handlePostNewAmiibo = async () => {
-    setPostAmiibo()
+    setPostAmiibo();
     try {
       await axios.post(`${apiURL}/`, {
         name: postAmiibo.name,
@@ -107,7 +116,6 @@ function Amiibo() {
 
   const handleClickDeleteOpen = (amiibo) => {
     setSelectedAmiibo(amiibo);
-    console.log(amiibo);
     setDeleteOpen(true);
   };
 
@@ -344,7 +352,6 @@ function Amiibo() {
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
-              console.log("worked");
               await handleUpdate(values);
               handleCloseEdit();
             } catch (err) {

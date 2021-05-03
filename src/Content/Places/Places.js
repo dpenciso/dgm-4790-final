@@ -68,45 +68,46 @@ function Places() {
 
   return (
     <div className="app">
-      {" "}
-      <Typography
-        className={classes.title}
-        gutterBottom
-        variant="h5"
-        component="h1"
-      >
-        Zelda Places
-      </Typography>
-      <Container className={classes.root}>
-        {placesList.map((place) => {
-          return (
-            <Card className={classes.card} key={place.id}>
-              <CardMedia
-                component="img"
-                height="300"
-                className={classes.media}
-                image="https://gamingbolt.com/wp-content/uploads/2017/01/the-legend-of-zelda-breath-of-the-wild-1-2.jpg"
-                title={place.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {place.name}
-                </Typography>
-                <Accordion>
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography>Description</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body2" color="textSecondary">
-                      {place.description}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </Container>
+      <div className={"main-container"}>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h1"
+        >
+          Zelda Places
+        </Typography>
+        <Container className={classes.root}>
+          {placesList.map((place) => {
+            return (
+              <Card className={classes.card} key={place.id}>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  className={classes.media}
+                  image="https://gamingbolt.com/wp-content/uploads/2017/01/the-legend-of-zelda-breath-of-the-wild-1-2.jpg"
+                  title={place.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {place.name}
+                  </Typography>
+                  <Accordion>
+                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                      <Typography>Description</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography variant="body2" color="textSecondary">
+                        {place.description}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </Container>
+      </div>{" "}
     </div>
   );
 }

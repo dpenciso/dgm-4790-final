@@ -69,44 +69,46 @@ function Bosses() {
   return (
     <div className="app">
       {" "}
-      <Typography
-        className={classes.title}
-        gutterBottom
-        variant="h5"
-        component="h1"
-      >
-        Zelda Bosses
-      </Typography>
-      <Container className={classes.root}>
-        {bosssesList.map((boss) => {
-          return (
-            <Card className={classes.card} key={boss.id}>
-              <CardMedia
-                component="img"
-                height="300"
-                className={classes.media}
-                image="https://i.redd.it/uzfyn2622q731.jpg"
-                title={boss.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {boss.name}
-                </Typography>
-                <Accordion>
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography>Description</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body2" color="textSecondary">
-                      {boss.description}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </Container>
+      <div className={"main-container"}>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h1"
+        >
+          Zelda Bosses
+        </Typography>
+        <Container className={classes.root}>
+          {bosssesList.map((boss) => {
+            return (
+              <Card className={classes.card} key={boss.id}>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  className={classes.media}
+                  image="https://i.redd.it/uzfyn2622q731.jpg"
+                  title={boss.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {boss.name}
+                  </Typography>
+                  <Accordion>
+                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                      <Typography>Description</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography variant="body2" color="textSecondary">
+                        {boss.description}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </Container>
+      </div>
     </div>
   );
 }
